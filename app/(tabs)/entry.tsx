@@ -1,67 +1,28 @@
-import { ThemedText } from "@/components/ThemedText";
-import { useState } from "react";
-import { Alert, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity } from "react-native";
+import { Box } from "@/components/ui/box";
+import { Center } from "@/components/ui/center";
+import { Heading } from "@/components/ui/heading";
+import { Icon } from "@/components/ui/icon";
+import { Text } from "@/components/ui/text";
+import { Clock } from "lucide-react-native";
+import { ScrollView } from "react-native";
 
 export default function EntryScreen() {
-  const [text, onChangeText] = useState("Useless Text");
-  const [number, onChangeNumber] = useState("");
 
   return (
-    <ScrollView
-      contentContainerStyle={{ padding: 16 }}
-      style={{ backgroundColor: "#fff" }}
-    >
-      <ThemedText type="title">⏰ Registro de Horas</ThemedText>
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeNumber}
-        value={number}
-        placeholder="0"
-        keyboardType="numeric"
-      />
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeNumber}
-        value={number}
-        placeholder="0"
-        keyboardType="numeric"
-      />
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeText}
-        value={text}
-        placeholder="EJ: Trabajo matutino"
-      />
-       <TouchableOpacity
-          style={styles.button}
-          onPress={() => Alert.alert('Horas registrada')}
-        >
-          <Text style={styles.buttonText}>+ Añadir Registro</Text>
-        </TouchableOpacity>
-      <ThemedText type="title">📋 Registro de Horas</ThemedText>
-      <ThemedText type="default">
-        No hay horas registradas
-      </ThemedText>
-    </ScrollView>
+    <Box className="gap-6">
+      <Box className="bg-white dark:bg-black p-4">
+        <Center>
+          <Icon as={Clock} className="m-2 w-12 h-12" color="#8637CF"/>
+          <Heading size="md" className="mb-1">
+            Registro de Tiempo
+          </Heading>
+          <Text size="sm">Registra tus horas de trabajo</Text>
+        </Center>
+      </Box>
+      <ScrollView>
+   
+      </ScrollView>
+    </Box>
   );
 }
 
-const styles = StyleSheet.create({
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-  },
-  button: {
-    backgroundColor: 'blue',
-    padding: 12,
-    margin: 12,
-    borderRadius: 6,
-    alignItems: 'center',
-  },
-  buttonText: {
-    color: 'white',
-    fontWeight: 'bold',
-  },
-});
